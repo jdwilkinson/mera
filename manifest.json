@@ -3,7 +3,7 @@
  
   "name": "Make ESPN Reasonable Again",
   "version": "0.0.1",
-  "description": "Make ESPN Reasonable Again",
+  "description": "Removes obnoxious personalities from ESPN.",
  
   "content_scripts": [{
     "js": ["content.js"],
