@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+ 
+  "name": "Make ESPN Reasonable Again",
+  "version": "0.0.1",
+  "description": "Make ESPN Reasonable Again",
+ 
+  "content_scripts": [{
+    "js": ["content.js"],
+    "matches": ["http://*.espn.com/*"]
+  }]
+}
