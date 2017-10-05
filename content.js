@@ -55,7 +55,7 @@ function removeFlagged() {
 			article.removeChild(article.childNodes[0]);
 		}
 		var span = document.createElement("span");
-		var text = document.createTextNode("ESPN is so reasonable!");
+		var text = document.createTextNode("Make ESPN reasonable again!");
 		span.appendChild(text);
 		article.appendChild(span);
 	}
