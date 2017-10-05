@@ -1,6 +1,6 @@
 // Words that trigger deletion of a section.
 var prohibited = ['Kellerman', 'Stephen A', 'LaVar', 'LaMelo', 'Lonzo'];
-// Nodes to be removed, in [parent, child] tuples.
+// Sections to be cleared.
 var toBeRemoved = [];
 
 var body = document.getElementsByTagName("body")[0];
@@ -12,13 +12,14 @@ function flagNodes(node) {
 	for (var i=0; i < children.length; i++) {
 		var child = children[i];
 		if (shouldBeRemoved(child)) {
-			var section = findParent(child, "section");
+			var section = findParent(child, "article");
 			// If it's not in a <section>, ignore it.
 			if (!section) {
 				continue;
 			}
-			var sectionParent = section.parentNode;
-			toBeRemoved.push([sectionParent, section]);
+			if (!toBeRemoved.includes(section)) {
+				toBeRemoved.push(section);
+			}
 		} else {
 			flagNodes(child);
 		}
@@ -49,25 +50,13 @@ function shouldBeRemoved(node) {
 
 function removeFlagged() {
 	for (var i = 0; i < toBeRemoved.length; i++) {
-		var parent = toBeRemoved[i][0];
-		var child = toBeRemoved[i][1];
-		// Sometimes non-children get added, so ensure they're valid first.
-		if (isChild(parent, child)) {
-			parent.removeChild(child);
-			var span = document.createElement("section");
-			var text = document.createTextNode("ESPN is so reasonable!");
-			span.appendChild(text);
-			parent.appendChild(span);
+		var section = toBeRemoved[i];
+		while (section.childNodes.length > 0) {
+			section.removeChild(section.childNodes[0]);
 		}
+		var span = document.createElement("span");
+		var text = document.createTextNode("ESPN is so reasonable!");
+		span.appendChild(text);
+		section.appendChild(span);
 	}
-}
-
-function isChild(parent, child) {
-	var children = parent.childNodes;
-	for (var i = 0; i < children.length; i++) {
-		if (children[i] == child) {
-			return true;
-		}
-	}
-	return false;
 }

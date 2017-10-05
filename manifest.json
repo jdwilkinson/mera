@@ -2,6 +2,7 @@
   "manifest_version": 2,
  
   "name": "Make ESPN Reasonable Again",
+  "short_name": "MERA",
   "version": "0.0.1",
   "description": "Removes obnoxious personalities from ESPN.",
  
