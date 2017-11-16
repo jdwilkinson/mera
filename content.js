@@ -1,5 +1,5 @@
 // Words that trigger deletion of a section.
-var prohibited = ['Kellerman', 'Stephen A', 'LaVar', 'LaMelo', 'Lonzo'];
+var prohibited = ['Kellerman', 'Stephen A', 'LaVar', 'LaMelo', 'Lonzo', 'LiAngelo', 'First Take', 'Matthew Berry'];
 // Sections to be cleared.
 var toBeRemoved = [];
 
